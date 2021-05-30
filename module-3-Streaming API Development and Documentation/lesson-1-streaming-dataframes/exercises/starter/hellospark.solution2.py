@@ -16,15 +16,23 @@ logData = spark.read.text(logFile).cache()
 
 # TO-DO: Define a python function that accepts row as in an input, and
 # increments the total number of times the letter 'a' has been encountered (including in this row)
-numAs = logData.filter(logData.value.contains('a')).count()
-numBs = logData.filter(logData.value.contains('b')).count()
+numAs = 0
+numBs = 0
 
-# TO-DO: print the count for letter 'a' and letter 'b'
-print("*******")
-print("*******")
-print("*****Lines with d: %i, lines with s: %i" % (numAs, numBs))
-print("*******")
-print("*******")
+def countA(row):
+    global numAs
+    numAs += row.value.count('a')
+    print('***Total A count', numAs)
+
+def countB(row):
+    global numBs
+    numBs += row.value.count('b')
+    print('***Total B count', numBs)
+
+# TO-DO: call appropriate functions to filter the data containing letters 'a'
+# and 'b', and then count the rows that were found
+logData.forEach(countA)
+logData.forEach(countB)
 
 # TO-DO: stop the spark application
 spark.stop()
