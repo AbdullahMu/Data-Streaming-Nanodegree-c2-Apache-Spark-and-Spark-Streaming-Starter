@@ -1,7 +1,7 @@
 from pyspark.sql import SparkSession
 
 # TO-DO: create a variable with the absolute path to the text file
-# /home/workspace/walkthrough/exercises/starter/Test.txt
+# /home/workspace/Test.txt
 
 # TO-DO: create a Spark session
 

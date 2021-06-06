@@ -28,7 +28,7 @@ redisMessageSchema = StructType(
 
 #TO-DO: set the log level to WARN
 
-#TO-DO: read the redis-server kafka topic as a source into a streaming dataframe with the bootstrap server kafka:19092, configuring the stream to read the earliest messages possible                                    
+#TO-DO: read the redis-server kafka topic as a source into a streaming dataframe with the bootstrap server localhost:9092, configuring the stream to read the earliest messages possible                                    
 
 #TO-DO: using a select expression on the streaming dataframe, cast the key and the value columns from kafka as strings, and then select them
 
@@ -48,8 +48,7 @@ redisMessageSchema = StructType(
 #TO-DO: select the account number, location, and birth year (using split)
 
 # TO-DO: write the stream in JSON format to a kafka topic called customer-attributes, and configure it to run indefinitely, the console output will not show any output. 
-# TO-DO: for the "checkpointLocation" option in the writeStream, be sure to use a unique file path to avoid conflicts with other spark scripts
-# You will need to type 'docker exec -it nd029-c2-apache-spark-and-spark-streaming_kafka_1 kafka-console-consumer --bootstrap-server localhost:19092 --topic customer-attributes' to see the JSON data
+#You will need to type /data/kafka/bin/kafka-console-consumer --bootstrap-server localhost:9092 --topic customer-attributes --from-beginning to see the JSON data
 #
 # The data will look like this: {"accountNumber":"288485115","location":"Brazil","birthYear":"1938"}
 
